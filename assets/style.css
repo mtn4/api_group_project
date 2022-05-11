@@ -101,3 +101,6 @@ h1 {
   gap: 10px;
   width: 100%;
 }
+.rowItem input {
+  width: 90%;
+}
