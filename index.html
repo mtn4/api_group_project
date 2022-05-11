@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>API Project</title>
+    <link rel="stylesheet" href="./assets/style.css" />
   </head>
   <body>
     <div class="topBar">
-      <h1>My capsule API</h1>
+      <h1>My Capsule API</h1>
       <input type="text" />
       <select name="" id="">
         <option value="all">All</option>
@@ -23,19 +23,20 @@
       </select>
       <div id="reset">Reset</div>
     </div>
+    <div id="loader"><img src="./assets/loader.svg" alt="" /></div>
     <div class="cont">
-      <div class="row">
-        <div class="rowItem">ID</div>
-        <div class="rowItem">First Name</div>
-        <div class="rowItem">Last Name</div>
-        <div class="rowItem">Capsule</div>
-        <div class="rowItem">Age</div>
-        <div class="rowItem">City</div>
-        <div class="rowItem">Gender</div>
-        <div class="rowItem">Hobby</div>
+      <div class="category row">
+        <div class="rowItem" data-type="id">ID</div>
+        <div class="rowItem" data-type="firstName">First Name</div>
+        <div class="rowItem" data-type="lastName">Last Name</div>
+        <div class="rowItem" data-type="capsule">Capsule</div>
+        <div class="rowItem" data-type="age">Age</div>
+        <div class="rowItem" data-type="city">City</div>
+        <div class="rowItem" data-type="gender">Gender</div>
+        <div class="rowItem" data-type="hobby">Hobby</div>
         <div class="rowItem">Action</div>
       </div>
     </div>
-    <script src="main.js"></script>
+    <script src="./scripts/index.js"></script>
   </body>
 </html>
