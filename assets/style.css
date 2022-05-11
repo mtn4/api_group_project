@@ -1,0 +1,103 @@
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Secular+One&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Secular One", sans-serif;
+  font-size: 18px;
+}
+body {
+  background: rgb(174, 238, 180);
+  background: radial-gradient(
+    circle,
+    rgba(174, 238, 180, 1) 0%,
+    rgba(148, 187, 233, 1) 100%
+  );
+}
+#loader img {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+/* .category:first-child {
+  border-top-left-radius: 20px;
+}
+.category:nth-child(8) {
+  border-top-right-radius: 5px;
+} */
+.cont {
+  margin: auto;
+  width: 95%;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.6);
+}
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 5px;
+}
+.row:nth-child(odd) {
+  background-color: rgb(184, 209, 255);
+}
+.row:nth-child(even) {
+  background-color: lightgreen;
+}
+.row:hover {
+  background-color: tomato;
+}
+.rowItem {
+  width: 100%;
+}
+.category {
+  /* margin-top: 50px; */
+  /* border-radius: 10px 10px 0 0; */
+  font-weight: 700;
+  font-size: 24px;
+  padding: 10px 5px;
+  cursor: pointer;
+}
+.topBar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 40px;
+  justify-content: center;
+  height: 120px;
+}
+h1 {
+  font-size: 36px;
+  font-family: "Permanent Marker", cursive;
+}
+.topBar input,
+.topBar select {
+  height: 50px;
+  background-color: lemonchiffon;
+}
+
+.btnEdit,
+.btnDelete,
+.topBar #reset {
+  padding: 8px 15px;
+  background-color: lemonchiffon;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  margin: 5px 0;
+  /* color: white; */
+}
+.topBar #reset {
+  padding: 15px 20px;
+}
+.btnCont {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /* justify-content: center; */
+  padding: 0;
+  gap: 10px;
+  width: 100%;
+}
