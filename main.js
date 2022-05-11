@@ -1,8 +1,10 @@
 let cont = document.querySelector(".cont");
 let search = document.querySelector("input");
+
 search.addEventListener("keyup", searchFunc);
 let select = document.querySelector("select");
 let btnReset = document.querySelector("#reset");
+
 btnReset.addEventListener("click", resetFunc);
 
 let peopleObjArray = [];
@@ -48,11 +50,11 @@ function drawTable(peopleObjArray) {
   <div class="categoryItem">Hobby</div>
   </div>`;
 
-  console.log(peopleObjArray);
   for (let i = 0; i < peopleObjArray.length; i++) {
     let row = document.createElement("div");
     row.classList.add("row");
     for (let item in peopleObjArray[i]) {
+      row.setAttribute("id", peopleObjArray[i].id);
       let itemOfRow = document.createElement("div");
       itemOfRow.textContent = peopleObjArray[i][item];
       itemOfRow.classList.add("rowItem");
@@ -60,9 +62,11 @@ function drawTable(peopleObjArray) {
     }
     let btnEdit = document.createElement("div");
     btnEdit.textContent = "edit ";
+    btnEdit.classList.add("btnEdit");
     btnEdit.addEventListener("click", myEditFunc);
     let btnDelete = document.createElement("div");
     btnDelete.textContent = "delete ";
+    btnDelete.classList.add("btnDelete");
     btnDelete.addEventListener("click", myDeleteFunc);
     row.appendChild(btnEdit);
     row.appendChild(btnDelete);
@@ -72,12 +76,23 @@ function drawTable(peopleObjArray) {
 function myEditFunc() {
   //todo
 }
-function myDeleteFunc() {
-  //todo
+function myDeleteFunc(e) {
+  let rowToDel = e.path[1];
+  //   let rowToDelID = e.path[1].getAttribute("id");
+  //   deleteItemFromArrayByID(rowToDelID);
+  rowToDel.remove();
 }
+// function deleteItemFromArrayByID(id) {
+//   for (let i = 0; i < peopleObjArray.length; i++) {
+//     if (peopleObjArray[i].id === id) {
+//       peopleObjArray.splice(i, 1);
+//     }
+//   }
+// }
+
 function searchFunc() {
-  //todo
+  //todo matan
 }
 function resetFunc() {
-  //todo
+  drawTable(peopleObjArray);
 }
