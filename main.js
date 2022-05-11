@@ -2,6 +2,7 @@ let cont = document.querySelector(".cont");
 let search = document.querySelector("input");
 search.addEventListener("keyup", searchFunc);
 let select = document.querySelector("select");
+select.addEventListener("change", selectSearchFunc);
 let btnReset = document.querySelector("#reset");
 btnReset.addEventListener("click", resetFunc);
 
@@ -39,6 +40,7 @@ fetchData();
 function drawTable(peopleObjArray) {
   //todo categories
   cont.innerHTML = `<div class="category row">
+  <div class="categoryItem">ID</div>
   <div class="categoryItem">First Name</div>
   <div class="categoryItem">Last Name</div>
   <div class="categoryItem">Capsule</div>
@@ -48,7 +50,7 @@ function drawTable(peopleObjArray) {
   <div class="categoryItem">Hobby</div>
   </div>`;
 
-  console.log(peopleObjArray);
+  // console.log(peopleObjArray);
   for (let i = 0; i < peopleObjArray.length; i++) {
     let row = document.createElement("div");
     row.classList.add("row");
@@ -59,24 +61,82 @@ function drawTable(peopleObjArray) {
       row.appendChild(itemOfRow);
     }
     let btnEdit = document.createElement("div");
-    btnEdit.textContent = "edit ";
+    btnEdit.textContent = "edit";
     btnEdit.addEventListener("click", myEditFunc);
     let btnDelete = document.createElement("div");
     btnDelete.textContent = "delete ";
     btnDelete.addEventListener("click", myDeleteFunc);
+    let btnCancel = document.createElement("div");
+    btnCancel.textContent = "Cancel";
+    let btnConfirm = document.createElement("div");
+    btnConfirm.textContent = "Confirm";
+    btnCancel.style.display = "none";
+    btnConfirm.style.display = "none";
     row.appendChild(btnEdit);
     row.appendChild(btnDelete);
+    row.appendChild(btnCancel);
+    row.appendChild(btnConfirm);
     cont.appendChild(row);
   }
 }
-function myEditFunc() {
+function myEditFunc(e) {
   //todo
+  // const originalRow = e.target.parentElement;
+  rowObj = {};
+  for (let i = 1; i < 8; i++) {
+    let originalRow = e.target.parentElement.children[i];
+    rowObj[i] = originalRow.innerText;
+    originalRow.innerHTML = `<input type="text" placeholder="${rowObj[i]}"> `;
+  }
+  e.target.parentElement.children[8].style.display = "none";
+  e.target.parentElement.children[9].style.display = "none";
+  // for (let i = 1; i < 8; i++) {
+  //   let originalRow = e.target.parentElement.children[i];
+  //   const placeholderText = originalRow.innerText;
+  //   originalRow.innerHTML = `<input type="text" placeholder="${placeholderText}"> `;
+  // }
+  // let cancelBtn = e.target.parentElement.children[8];
+  // let confirmBtn = e.target.parentElement.children[9];
+  // cancelBtn.innerHTML = "Cancel";
+  // confirmBtn.innerHTML = "Confirm";
+  // cancelBtn.addEventListener("click", () => {
+  //   for (let i = 1; i < 8; i++) {
+  //     let originalRow = e.target.parentElement.children[i];
+  //     const placeholderText = originalRow.innerText;
+  //     console.log(placeholderText);
+  //     // originalRow.innerHTML = `<div class"rowItem">${placeholderText}</div> `;
+  //   }
+  // });
 }
 function myDeleteFunc() {
   //todo
 }
+
 function searchFunc() {
-  //todo
+  for (let i = 1; i < cont.children.length; i++) {
+    cont.children[i].style.display = "none";
+    if (select.value === "all") {
+      for (let j = 1; j < 8; j++) {
+        if (cont.children[i].children[j].innerText.includes(search.value)) {
+          cont.children[i].style.display = "flex";
+          break;
+        }
+      }
+    } else {
+      if (
+        cont.children[i].children[select.value].innerText.includes(search.value)
+      ) {
+        cont.children[i].style.display = "flex";
+      }
+    }
+  }
+}
+
+function selectSearchFunc(e) {
+  for (let i = 1; i < cont.children.length; i++) {
+    cont.children[i].style.display = "flex";
+  }
+  searchFunc();
 }
 function resetFunc() {
   //todo
