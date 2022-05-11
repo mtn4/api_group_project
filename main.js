@@ -40,15 +40,6 @@ async function fetchData() {
 fetchData();
 function drawTable(peopleObjArray) {
   //todo categories
-  cont.innerHTML = `<div class="category row">
-  <div class="categoryItem">First Name</div>
-  <div class="categoryItem">Last Name</div>
-  <div class="categoryItem">Capsule</div>
-  <div class="categoryItem">Age</div>
-  <div class="categoryItem">City</div>
-  <div class="categoryItem">Gender</div>
-  <div class="categoryItem">Hobby</div>
-  </div>`;
 
   for (let i = 0; i < peopleObjArray.length; i++) {
     let row = document.createElement("div");
@@ -60,6 +51,10 @@ function drawTable(peopleObjArray) {
       itemOfRow.classList.add("rowItem");
       row.appendChild(itemOfRow);
     }
+    let btnCont = document.createElement("div");
+    btnCont.classList.add("rowItem");
+    btnCont.classList.add("btnCont");
+
     let btnEdit = document.createElement("div");
     btnEdit.textContent = "edit ";
     btnEdit.classList.add("btnEdit");
@@ -68,8 +63,9 @@ function drawTable(peopleObjArray) {
     btnDelete.textContent = "delete ";
     btnDelete.classList.add("btnDelete");
     btnDelete.addEventListener("click", myDeleteFunc);
-    row.appendChild(btnEdit);
-    row.appendChild(btnDelete);
+    row.appendChild(btnCont);
+    btnCont.appendChild(btnEdit);
+    btnCont.appendChild(btnDelete);
     cont.appendChild(row);
   }
 }
@@ -77,7 +73,7 @@ function myEditFunc() {
   //todo
 }
 function myDeleteFunc(e) {
-  let rowToDel = e.path[1];
+  let rowToDel = e.path[2];
   //   let rowToDelID = e.path[1].getAttribute("id");
   //   deleteItemFromArrayByID(rowToDelID);
   rowToDel.remove();

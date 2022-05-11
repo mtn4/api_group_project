@@ -1,16 +1,28 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
 .row {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
+}
+.rowItem:hover {
+  background-color: cornflowerblue;
+}
+.row:nth-child(odd) {
+  background-color: rgb(184, 209, 255);
 }
 .row:hover {
   color: white;
-  background-color: peru;
+  background-color: teal;
 }
 .rowItem {
   width: 100%;
-  padding: 1rem;
+  height: 2.5rem;
 }
 .topBar {
   display: flex;
@@ -18,13 +30,7 @@
   align-items: center;
   justify-content: space-evenly;
 }
-.category {
-  margin-right: 2rem;
-}
-.categoryItem {
-  width: 100%;
-  padding: 1rem;
-}
+
 .btnEdit {
   border: 1px solid turquoise;
   padding: 0.5rem;
@@ -32,4 +38,12 @@
 .btnDelete {
   border: 1px solid turquoise;
   padding: 0.5rem;
+}
+.btnCont {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  width: 100%;
 }
