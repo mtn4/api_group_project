@@ -192,7 +192,7 @@ function sortTable(e) {
 }
 async function fetchWeather(e) {
   const response = await fetch(
-    `http://api.weatherapi.com/v1/current.json?key=4104df9426b64469a92191323221105&q=${e.target.textContent}`
+    `https://api.weatherapi.com/v1/current.json?key=4104df9426b64469a92191323221105&q=${e.target.textContent}`
   );
   const data = await response.json();
   // console.log(response.ok);
