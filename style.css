@@ -4,12 +4,32 @@
   align-items: center;
   justify-content: space-between;
 }
+.row:hover {
+  color: white;
+  background-color: peru;
+}
 .rowItem {
   width: 100%;
+  padding: 1rem;
 }
 .topBar {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
+}
+.category {
+  margin-right: 2rem;
+}
+.categoryItem {
+  width: 100%;
+  padding: 1rem;
+}
+.btnEdit {
+  border: 1px solid turquoise;
+  padding: 0.5rem;
+}
+.btnDelete {
+  border: 1px solid turquoise;
+  padding: 0.5rem;
 }
