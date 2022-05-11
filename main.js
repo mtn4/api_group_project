@@ -48,6 +48,7 @@ function drawTable(peopleObjArray) {
   <div class="rowItem">City</div>
   <div class="rowItem">Gender</div>
   <div class="rowItem">Hobby</div>
+  <div class="rowItem">Action</div>
   </div>`;
 
   for (let i = 0; i < peopleObjArray.length; i++) {
