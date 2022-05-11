@@ -1,0 +1,48 @@
+.rot {
+  display: none;
+}
+@media screen and (orientation: portrait) and (max-device-width: 400px) and (max-device-width: 450px) {
+  /* Input Styles */
+  .rot {
+    display: block;
+  }
+  .cont {
+    display: none;
+  }
+  .topBar {
+    display: none;
+  }
+}
+@media screen and (orientation: portrait) {
+  h1 {
+    font-size: 36px;
+  }
+}
+@media (max-width: 768px) {
+  * {
+    font-size: 14px;
+  }
+  h1 {
+    font-size: 12px;
+  }
+
+  .topBar {
+    width: 100%;
+    height: 60px;
+    gap: 10px;
+  }
+  .btnEdit,
+  .btnDelete,
+  .topBar #reset {
+    padding: 5px;
+  }
+  .topBar input,
+  .topBar select {
+    height: 20px;
+  }
+}
+@media screen and (orientation: landscape) {
+  .rot {
+    display: none;
+  }
+}
