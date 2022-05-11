@@ -91,8 +91,25 @@ function myDeleteFunc(e) {
 // }
 
 function searchFunc() {
-  //todo matan
+  for (let i = 1; i < cont.children.length; i++) {
+    cont.children[i].style.display = "none";
+    if (select.value === "all") {
+      for (let j = 1; j < 8; j++) {
+        if (cont.children[i].children[j].innerText.includes(search.value)) {
+          cont.children[i].style.display = "flex";
+          break;
+        }
+      }
+    } else {
+      if (
+        cont.children[i].children[select.value].innerText.includes(search.value)
+      ) {
+        cont.children[i].style.display = "flex";
+      }
+    }
+  }
 }
+
 function resetFunc() {
   drawTable(peopleObjArray);
 }
