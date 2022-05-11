@@ -50,6 +50,9 @@ function drawTable(peopleObjArray) {
       itemOfRow.classList.add("rowItem");
       itemOfRow.dataset.type = item;
       row.appendChild(itemOfRow);
+      if (item === "city") {
+        itemOfRow.addEventListener("click", fetchWeather);
+      }
     }
     let btnCont = document.createElement("div");
     btnCont.classList.add("rowItem");
@@ -186,4 +189,19 @@ function sortTable(e) {
   cont.append(catRow);
   drawTable(peopleObjArray);
   // console.log(cont.children[0]);
+}
+async function fetchWeather(e) {
+  const response = await fetch(
+    `http://api.weatherapi.com/v1/current.json?key=4104df9426b64469a92191323221105&q=${e.target.textContent}`
+  );
+  const data = await response.json();
+  // console.log(response.ok);
+  if (response.ok) {
+    // console.log(data.current.temp_c);
+    let city = e.target.textContent;
+    e.target.innerText = `Temp: ${data.current.temp_c}c`;
+    setTimeout(() => {
+      e.target.innerText = `${city}`;
+    }, 2500);
+  }
 }
