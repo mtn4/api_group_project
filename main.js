@@ -1,13 +1,10 @@
-// async function getData() {
-//   let fetchs = await fetch(
-//     "https://capsules-asb6.herokuapp.com/api/teacher/mordi"
-//   );
-//   let data = await fetchs.json();
-//   console.log(data);
-//   drawTable(data);
-// }
-// getData();
 let cont = document.querySelector(".cont");
+let search = document.querySelector("input");
+search.addEventListener("keyup", searchFunc);
+let select = document.querySelector("select");
+let btnReset = document.querySelector("#reset");
+btnReset.addEventListener("click", resetFunc);
+
 let peopleObjArray = [];
 
 async function fetchData() {
@@ -41,6 +38,15 @@ async function fetchData() {
 fetchData();
 function drawTable(peopleObjArray) {
   //todo categories
+  cont.innerHTML = `<div class="category row">
+  <div class="categoryItem">First Name</div>
+  <div class="categoryItem">Last Name</div>
+  <div class="categoryItem">Capsule</div>
+  <div class="categoryItem">Age</div>
+  <div class="categoryItem">City</div>
+  <div class="categoryItem">Gender</div>
+  <div class="categoryItem">Hobby</div>
+  </div>`;
 
   console.log(peopleObjArray);
   for (let i = 0; i < peopleObjArray.length; i++) {
@@ -52,12 +58,26 @@ function drawTable(peopleObjArray) {
       itemOfRow.classList.add("rowItem");
       row.appendChild(itemOfRow);
     }
-    let btn1 = document.createElement("div");
-    btn1.textContent = "edit ";
-    let btn2 = document.createElement("div");
-    btn2.textContent = "delete ";
-    row.appendChild(btn1);
-    row.appendChild(btn2);
+    let btnEdit = document.createElement("div");
+    btnEdit.textContent = "edit ";
+    btnEdit.addEventListener("click", myEditFunc);
+    let btnDelete = document.createElement("div");
+    btnDelete.textContent = "delete ";
+    btnDelete.addEventListener("click", myDeleteFunc);
+    row.appendChild(btnEdit);
+    row.appendChild(btnDelete);
     cont.appendChild(row);
   }
+}
+function myEditFunc() {
+  //todo
+}
+function myDeleteFunc() {
+  //todo
+}
+function searchFunc() {
+  //todo
+}
+function resetFunc() {
+  //todo
 }
