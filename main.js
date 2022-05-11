@@ -1,8 +1,8 @@
 let cont = document.querySelector(".cont");
 let search = document.querySelector("input");
-
 search.addEventListener("keyup", searchFunc);
 let select = document.querySelector("select");
+select.addEventListener("change", selectSearchFunc);
 let btnReset = document.querySelector("#reset");
 
 btnReset.addEventListener("click", resetFunc);
@@ -39,7 +39,16 @@ async function fetchData() {
 }
 fetchData();
 function drawTable(peopleObjArray) {
-  //todo categories
+  cont.innerHTML = `<div class="category row">
+  <div class="rowItem">ID</div>
+  <div class="rowItem">First Name</div>
+  <div class="rowItem">Last Name</div>
+  <div class="rowItem">Capsule</div>
+  <div class="rowItem">Age</div>
+  <div class="rowItem">City</div>
+  <div class="rowItem">Gender</div>
+  <div class="rowItem">Hobby</div>
+  </div>`;
 
   for (let i = 0; i < peopleObjArray.length; i++) {
     let row = document.createElement("div");
@@ -73,18 +82,8 @@ function myEditFunc() {
   //todo
 }
 function myDeleteFunc(e) {
-  let rowToDel = e.path[2];
-  //   let rowToDelID = e.path[1].getAttribute("id");
-  //   deleteItemFromArrayByID(rowToDelID);
-  rowToDel.remove();
+  e.target.parentElement.parentElement.remove();
 }
-// function deleteItemFromArrayByID(id) {
-//   for (let i = 0; i < peopleObjArray.length; i++) {
-//     if (peopleObjArray[i].id === id) {
-//       peopleObjArray.splice(i, 1);
-//     }
-//   }
-// }
 
 function searchFunc() {
   for (let i = 1; i < cont.children.length; i++) {
@@ -105,7 +104,13 @@ function searchFunc() {
     }
   }
 }
-
+function selectSearchFunc(e) {
+  for (let i = 1; i < cont.children.length; i++) {
+    cont.children[i].style.display = "flex";
+  }
+  searchFunc();
+}
 function resetFunc() {
+  cont.innerHTML = ``;
   drawTable(peopleObjArray);
 }
